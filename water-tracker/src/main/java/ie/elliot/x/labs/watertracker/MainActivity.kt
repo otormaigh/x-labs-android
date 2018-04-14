@@ -18,12 +18,27 @@ package ie.elliot.x.labs.watertracker
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import ie.elliot.x.labs.R
+import android.support.v7.widget.Toolbar
+import android.text.SpannableString
+import android.text.style.RelativeSizeSpan
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+
+    setSupportActionBar(tbMain as Toolbar)
+
+    setIntakePercentage(0)
+  }
+
+  private fun setIntakePercentage(intake: Int) {
+    val source = "$intake%"
+    tvIntakePercentage.text = SpannableString(source).apply {
+      setSpan(RelativeSizeSpan(2f), 0, source.length - 1, 0)
+    }
   }
 }

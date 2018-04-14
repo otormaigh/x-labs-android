@@ -10,6 +10,8 @@ android {
     targetSdkVersion Version.target_sdk
     versionCode 1
     versionName "1.0"
+
+    vectorDrawables.useSupportLibrary = true
   }
 
   signingConfigs {

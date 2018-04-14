@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="?attr/actionBarSize"
+  android:elevation="0dp">
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/vertical_margin"
+    android:layout_marginEnd="@dimen/horizontal_margin"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/tvDate"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Tuesday, 26 Nov 2018, 18:37"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+      app:layout_constraintBottom_toTopOf="@id/tvTodaysIntake"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/tvTodaysIntake"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="0 / 1,500ml"
+      android:textColor="@color/grey"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+    <ImageView
+      android:id="@+id/ivHistory"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/horizontal_margin"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/ivMenu"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_history" />
+
+    <ImageView
+      android:id="@+id/ivMenu"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:srcCompat="@drawable/ic_menu" />
+  </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.Toolbar>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#3F51B5</color>
-  <color name="colorPrimaryDark">#303F9F</color>
-  <color name="colorAccent">#FF4081</color>
+  <color name="colorPrimary">@color/blue_whale</color>
+  <color name="colorPrimaryDark">#001122</color>
+  <color name="colorAccent">#446176</color>
+
+  <color name="blue_whale">#18374A</color>
+  <color name="solitude">#EDEEEF</color>
+  <color name="pattens_blue">#E0E2E4</color>
+  <color name="deep_sky_blue">#03BBFB</color>
+  <color name="link_water">#CDCFD1</color>
+
+  <color name="grey">#9E9E9E</color>
 </resources>
