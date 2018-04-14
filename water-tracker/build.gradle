@@ -10,6 +10,7 @@ android {
     targetSdkVersion Version.target_sdk
     versionCode 1
     versionName "1.0"
+    resConfig "en"
 
     vectorDrawables.useSupportLibrary = true
   }
@@ -53,6 +54,7 @@ dependencies {
   implementation Libs.kotlin_jre7
   implementation Libs.appcompat_v7
   implementation Libs.constraint_layout
+  implementation Libs.design
 
   implementation Libs.timber
   implementation Libs.android_ktx

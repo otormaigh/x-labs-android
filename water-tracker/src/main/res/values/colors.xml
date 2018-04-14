@@ -8,7 +8,10 @@
   <color name="solitude">#EDEEEF</color>
   <color name="pattens_blue">#E0E2E4</color>
   <color name="deep_sky_blue">#03BBFB</color>
+  <color name="ocean_blue">#3F80DD</color>
   <color name="link_water">#CDCFD1</color>
 
-  <color name="grey">#9E9E9E</color>
+  <color name="grey">#CCCCCC</color>
+  <color name="white">#FFFFFF</color>
+  <color name="black">#000000</color>
 </resources>

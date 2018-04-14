@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/navView"
+  android:layout_width="wrap_content"
+  android:layout_height="match_parent"
+  android:layout_gravity="end"
+  android:background="@color/white"
+  android:paddingTop="@dimen/vertical_margin">
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+      android:id="@+id/ivLogo"
+      android:layout_width="wrap_content"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toBottomOf="@id/tvVersionName"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@id/tvTitle"
+      app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+      android:id="@+id/tvTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/main.nav.drink_water"
+      android:textAllCaps="true"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+      android:textColor="@color/black"
+      app:layout_constraintBottom_toTopOf="@id/tvVersionName"
+      app:layout_constraintStart_toEndOf="@id/ivLogo"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/tvVersionName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+      android:textColor="@color/grey"
+      app:layout_constraintStart_toStartOf="@id/tvTitle"
+      app:layout_constraintTop_toBottomOf="@id/tvTitle"
+      tools:text="Ver 1.0" />
+
+    <View
+      android:id="@+id/dividerHeader"
+      style="@style/Main.NavDrawerDivider"
+      app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+    <TextView
+      android:id="@+id/tvGeneral"
+      style="@style/Main.SectionTitle"
+      android:text="@string/main.nav.general"
+      app:layout_constraintTop_toBottomOf="@id/dividerHeader" />
+
+    <TextView
+      android:id="@+id/tvDailyGoalTitle"
+      style="@style/Main.ItemTitle"
+      android:text="@string/main.nav.daily_goal"
+      app:layout_constraintTop_toBottomOf="@id/tvGeneral" />
+
+    <TextView
+      android:id="@+id/tvDailyGoalValue"
+      style="@style/Main.ItemValue"
+      android:text="@string/main.nav.1500ml"
+      app:layout_constraintBottom_toBottomOf="@id/tvDailyGoalTitle"
+      app:layout_constraintStart_toEndOf="@id/tvDailyGoalTitle"
+      app:layout_constraintTop_toTopOf="@id/tvDailyGoalTitle" />
+
+    <TextView
+      android:id="@+id/tvCupSizeTitle"
+      style="@style/Main.ItemTitle"
+      android:text="@string/main.nav.per_cup"
+      app:layout_constraintTop_toBottomOf="@id/tvDailyGoalTitle" />
+
+    <TextView
+      android:id="@+id/tvCupSizeValue"
+      style="@style/Main.ItemValue"
+      android:text="@string/main.nav.100ml"
+      app:layout_constraintBottom_toBottomOf="@id/tvCupSizeTitle"
+      app:layout_constraintStart_toEndOf="@id/tvCupSizeTitle"
+      app:layout_constraintTop_toTopOf="@id/tvCupSizeTitle" />
+
+    <View
+      android:id="@+id/dividerGeneral"
+      style="@style/Main.NavDrawerDivider"
+      app:layout_constraintTop_toBottomOf="@id/tvCupSizeTitle" />
+
+    <TextView
+      android:id="@+id/tvAppSettings"
+      style="@style/Main.SectionTitle"
+      android:text="@string/main.nav.app_settings"
+      app:layout_constraintTop_toBottomOf="@id/dividerGeneral" />
+
+    <TextView
+      android:id="@+id/tvNotification"
+      style="@style/Main.ItemTitle"
+      android:text="@string/main.nav.notifications"
+      app:layout_constraintTop_toBottomOf="@id/tvAppSettings" />
+
+    <android.support.v7.widget.SwitchCompat
+      android:id="@+id/switchNotification"
+      style="@style/Main.ItemValue"
+      app:layout_constraintBottom_toBottomOf="@id/tvNotification"
+      app:layout_constraintStart_toEndOf="@id/tvNotification"
+      app:layout_constraintTop_toTopOf="@id/tvNotification" />
+
+    <TextView
+      android:id="@+id/tvReminderTitle"
+      style="@style/Main.ItemTitle"
+      android:text="@string/main.nav.set_reminder"
+      app:layout_constraintTop_toBottomOf="@id/tvNotification" />
+
+    <TextView
+      android:id="@+id/tvReminderValue"
+      style="@style/Main.ItemValue"
+      android:text="@string/main.nav.every_60_mins"
+      app:layout_constraintBottom_toBottomOf="@id/tvReminderTitle"
+      app:layout_constraintStart_toEndOf="@id/tvReminderTitle"
+      app:layout_constraintTop_toTopOf="@id/tvReminderTitle" />
+
+    <View
+      android:id="@+id/dividerSettings"
+      style="@style/Main.NavDrawerDivider"
+      app:layout_constraintTop_toBottomOf="@id/tvReminderTitle" />
+
+    <TextView
+      android:id="@+id/tvRefer"
+      style="@style/Main.ItemTitle"
+      android:text="@string/main.nav.refer"
+      app:layout_constraintTop_toBottomOf="@id/dividerSettings" />
+
+  </android.support.constraint.ConstraintLayout>
+</android.support.design.widget.NavigationView>

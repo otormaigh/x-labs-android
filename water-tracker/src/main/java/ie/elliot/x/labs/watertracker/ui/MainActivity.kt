@@ -17,12 +17,16 @@
 package ie.elliot.x.labs.watertracker.ui
 
 import android.os.Bundle
+import android.support.v4.view.GravityCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
+import ie.elliot.x.labs.watertracker.BuildConfig
 import ie.elliot.x.labs.watertracker.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.drawer_main.*
+import kotlinx.android.synthetic.main.toolbar_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,10 +34,13 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-
     setSupportActionBar(tbMain as Toolbar)
 
     setIntakePercentage(0.3f)
+
+    ivMenu.setOnClickListener { navDrawer.openDrawer(GravityCompat.END) }
+
+    tvVersionName.text = getString(R.string.main_nav_version_name, BuildConfig.VERSION_NAME)
   }
 
   private fun setIntakePercentage(intake: Float) {
