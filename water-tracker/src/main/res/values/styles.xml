@@ -10,14 +10,14 @@
     <item name="android:windowBackground">@color/blue_whale</item>
   </style>
 
-  <style name="Main" />
-
-  <style name="Main.NavDrawerDivider">
+  <style name="Divider">
     <item name="android:layout_height">0.75dp</item>
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_marginTop">@dimen/vertical_margin</item>
     <item name="android:background">@color/grey</item>
   </style>
+
+  <style name="Main" />
 
   <style name="Main.Title">
     <item name="android:layout_height">wrap_content</item>

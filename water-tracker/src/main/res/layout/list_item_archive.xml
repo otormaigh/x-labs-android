@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="match_parent"
+  android:layout_marginStart="@dimen/horizontal_margin"
+  android:layout_marginTop="@dimen/vertical_margin"
+  android:layout_marginEnd="@dimen/horizontal_margin"
+  android:gravity="center_horizontal"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/tvDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="sans-serif-light"
+    android:text="Tuesday\n26 Nov 2018"
+    android:textAlignment="center"
+    android:textSize="18sp" />
+
+  <View
+    style="@style/Divider"
+    android:layout_marginBottom="@dimen/vertical_margin" />
+
+  <TextView
+    android:id="@+id/tvIntakePercentage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="sans-serif-thin"
+    android:text="48%"
+    android:textSize="28sp" />
+
+  <TextView
+    android:id="@+id/tvIntake"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="570 / 1,500ml"
+    android:textColor="@color/grey" />
+
+  <View
+    style="@style/Divider"
+    android:layout_marginBottom="@dimen/vertical_margin" />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="09:25 - 70ml" /> <!-- TODO: Replace with nested RecyclerView-->
+
+</LinearLayout>

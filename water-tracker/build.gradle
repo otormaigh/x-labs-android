@@ -55,7 +55,12 @@ dependencies {
   implementation Libs.appcompat_v7
   implementation Libs.constraint_layout
   implementation Libs.design
+  implementation Libs.recyclerview
 
   implementation Libs.timber
   implementation Libs.android_ktx
+}
+
+androidExtensions {
+  experimental = true
 }
