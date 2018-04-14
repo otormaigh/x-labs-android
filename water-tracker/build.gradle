@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
   compileSdkVersion Version.compile_sdk
   defaultConfig {
-    applicationId "ie.elliot.x.labs"
+    applicationId "ie.elliot.x.labs.watertracker"
     minSdkVersion Version.min_sdk
     targetSdkVersion Version.target_sdk
     versionCode 1
