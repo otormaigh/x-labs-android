@@ -4,11 +4,20 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".MainActivity">
+  tools:context=".ui.MainActivity">
 
   <include
     android:id="@+id/tbMain"
     layout="@layout/toolbar_main" />
+
+  <ie.elliot.x.labs.watertracker.ui.widget.IntakeProgressbar
+    android:id="@+id/pbIntake"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tbMain" />
 
   <TextView
     android:id="@+id/tvIntakePercentage"
@@ -38,10 +47,10 @@
     android:id="@+id/tvHowMuchWater"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/vertical_margin_double"
     android:text="How much water did you drink?"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginBottom="@dimen/vertical_margin_double"
     app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

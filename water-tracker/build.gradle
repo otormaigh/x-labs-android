@@ -53,4 +53,7 @@ dependencies {
   implementation Libs.kotlin_jre7
   implementation Libs.appcompat_v7
   implementation Libs.constraint_layout
+
+  implementation Libs.timber
+  implementation Libs.android_ktx
 }

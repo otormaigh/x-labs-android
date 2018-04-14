@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-package ie.elliot.x.labs.watertracker
+package ie.elliot.x.labs.watertracker.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
+import ie.elliot.x.labs.watertracker.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -32,11 +33,13 @@ class MainActivity : AppCompatActivity() {
 
     setSupportActionBar(tbMain as Toolbar)
 
-    setIntakePercentage(0)
+    setIntakePercentage(0.3f)
   }
 
-  private fun setIntakePercentage(intake: Int) {
-    val source = "$intake%"
+  private fun setIntakePercentage(intake: Float) {
+    pbIntake.progress = intake
+
+    val source = "${intake.toInt()}%"
     tvIntakePercentage.text = SpannableString(source).apply {
       setSpan(RelativeSizeSpan(2f), 0, source.length - 1, 0)
     }
