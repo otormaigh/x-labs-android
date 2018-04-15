@@ -13,6 +13,7 @@ android {
     resConfig "en"
 
     vectorDrawables.useSupportLibrary = true
+    archivesBaseName = "$project.name-$versionName"
   }
 
   signingConfigs {
