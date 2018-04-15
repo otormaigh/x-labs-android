@@ -29,7 +29,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +43,9 @@ class MainActivity : AppCompatActivity() {
 
     ivMenu.setOnClickListener { navDrawer.openDrawer(GravityCompat.END) }
     ivHistory.setOnClickListener { HistoryActivity.launch(this@MainActivity) }
+    ivWater.setOnClickListener {
+      intakeProgressWheel.animateIn()
+    }
 
     tvVersionName.text = getString(R.string.main_nav_version_name, BuildConfig.VERSION_NAME)
   }
