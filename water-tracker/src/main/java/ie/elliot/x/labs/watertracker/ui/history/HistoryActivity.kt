@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ie.elliot.x.labs.watertracker.ui.intakehistory
+package ie.elliot.x.labs.watertracker.ui.history
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,28 +24,31 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import ie.elliot.x.labs.watertracker.R
-import kotlinx.android.synthetic.main.activity_intake_history.*
+import ie.elliot.x.labs.watertracker.extension.formatDate
+import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.toolbar_intake_history.*
 
-class IntakeHistoryActivity : AppCompatActivity() {
+class HistoryActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_intake_history)
+    setContentView(R.layout.activity_history)
     setSupportActionBar(tbHistory as Toolbar)
 
     ivClose.setOnClickListener { onBackPressed() }
+    val dateString = System.currentTimeMillis().formatDate("MMM, yyyy")
+    tvDateSummary.text = "$dateString - 2,326L" // FIXME: test data
 
     rvHistory.apply {
-      adapter = IntakeHistoryRecyclerAdapter()
-      layoutManager = LinearLayoutManager(this@IntakeHistoryActivity, RecyclerView.HORIZONTAL, false)
-      addItemDecoration(DividerItemDecoration(this@IntakeHistoryActivity, DividerItemDecoration.HORIZONTAL))
+      adapter = HistoryRecyclerAdapter()
+      layoutManager = LinearLayoutManager(this@HistoryActivity, RecyclerView.HORIZONTAL, false)
+      addItemDecoration(DividerItemDecoration(this@HistoryActivity, DividerItemDecoration.HORIZONTAL))
     }
   }
 
   companion object {
     fun launch(activity: AppCompatActivity) {
-      activity.startActivity(Intent(activity, IntakeHistoryActivity::class.java))
+      activity.startActivity(Intent(activity, HistoryActivity::class.java))
     }
   }
 }

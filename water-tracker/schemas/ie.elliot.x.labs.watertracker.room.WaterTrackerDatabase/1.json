@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "a2855e1e9c6a41d396d806c176075261",
+    "identityHash": "5a43adfbca0497f1b6784ad05d6b8afb",
     "entities": [
       {
         "tableName": "user",
@@ -31,12 +31,30 @@
         "foreignKeys": []
       },
       {
-        "tableName": "history",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "tableName": "intake_History",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `intakePercentage` REAL NOT NULL, `intakeGoal` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "uid",
             "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intakePercentage",
+            "columnName": "intakePercentage",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intakeGoal",
+            "columnName": "intakeGoal",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -53,7 +71,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"a2855e1e9c6a41d396d806c176075261\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5a43adfbca0497f1b6784ad05d6b8afb\")"
     ]
   }
 }

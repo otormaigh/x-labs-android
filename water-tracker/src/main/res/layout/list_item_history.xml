@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="wrap_content"
+  android:layout_height="match_parent"
+  android:layout_marginStart="@dimen/horizontal_margin"
+  android:layout_marginTop="@dimen/vertical_margin"
+  android:layout_marginEnd="@dimen/horizontal_margin">
+
+  <TextView
+    android:id="@+id/tvDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="sans-serif-light"
+    android:text="Tuesday\n26 Nov 2018"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toTopOf="@id/dividerDate"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0"
+    app:layout_constraintVertical_chainStyle="packed" />
+
+  <View
+    android:id="@+id/dividerDate"
+    style="@style/Divider"
+    android:layout_marginBottom="@dimen/vertical_margin"
+    app:layout_constraintBottom_toTopOf="@id/tvIntakePercentage"
+    app:layout_constraintTop_toBottomOf="@id/tvDate" />
+
+  <TextView
+    android:id="@+id/tvIntakePercentage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="sans-serif-thin"
+    android:text="48%"
+    android:textSize="28sp"
+    app:layout_constraintBottom_toTopOf="@id/tvIntake"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/dividerDate" />
+
+  <TextView
+    android:id="@+id/tvIntake"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="570 / 1,500ml"
+    android:textColor="@color/grey"
+    app:layout_constraintBottom_toTopOf="@id/dividerIntake"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvIntakePercentage" />
+
+  <View
+    android:id="@+id/dividerIntake"
+    style="@style/Divider"
+    android:layout_marginBottom="@dimen/vertical_margin"
+    app:layout_constraintBottom_toTopOf="@id/rvHistoryDetail"
+    app:layout_constraintTop_toBottomOf="@id/tvIntake" />
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/rvHistoryDetail"
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/dividerIntake"
+    tools:listitem="@layout/list_item_history_detail" />
+
+</android.support.constraint.ConstraintLayout>

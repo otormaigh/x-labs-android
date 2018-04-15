@@ -16,7 +16,7 @@
       android:id="@+id/tvDate"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Tuesday, 26 Nov 2018, 18:37"
+      android:text="Tuesday, 26 Nov 2018"
       android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
       app:layout_constraintBottom_toTopOf="@id/tvTodaysIntake"
       app:layout_constraintStart_toStartOf="parent"
