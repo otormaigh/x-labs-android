@@ -14,10 +14,17 @@
  * limitations under the License.
  */
 
-package ie.elliot.x.labs.watertracker.model
+package ie.elliot.x.labs.watertracker.room
 
-data class Archive(
-    val id: String,
-    val date: Long,
-    val intakePercentage: Float,
-    val intakeGoal: Int)
+import android.arch.persistence.room.Database
+import android.arch.persistence.room.RoomDatabase
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistoryDao
+import ie.elliot.x.labs.watertracker.room.dao.User
+import ie.elliot.x.labs.watertracker.room.dao.UserDao
+
+@Database(entities = [User::class, IntakeHistory::class], version = 1)
+abstract class WaterTrackerDatabase : RoomDatabase() {
+  abstract fun user(): UserDao
+  abstract fun history(): IntakeHistoryDao
+}

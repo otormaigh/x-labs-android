@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ie.elliot.x.labs.watertracker.ui.archive
+package ie.elliot.x.labs.watertracker.ui.intakehistory
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -22,15 +22,15 @@ import android.view.View
 import android.view.ViewGroup
 import ie.elliot.x.labs.watertracker.R
 import ie.elliot.x.labs.watertracker.extension.toPercentageString
-import ie.elliot.x.labs.watertracker.model.Archive
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.list_item_archive.*
+import kotlinx.android.synthetic.main.list_item_intake_history.*
 
-class ArchiveRecyclerAdapter : RecyclerView.Adapter<ArchiveRecyclerAdapter.ViewHolder>() {
-  private var data = listOf<Archive>()
+class IntakeHistoryRecyclerAdapter : RecyclerView.Adapter<IntakeHistoryRecyclerAdapter.ViewHolder>() {
+  private var data = listOf<IntakeHistory>()
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-      ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_archive, parent, false))
+      ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_intake_history, parent, false))
 
   override fun getItemCount() = 20
 
@@ -40,7 +40,7 @@ class ArchiveRecyclerAdapter : RecyclerView.Adapter<ArchiveRecyclerAdapter.ViewH
 
   inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
     fun bind() {
-      tvIntakePercentage.text = 48f.toPercentageString()
+      tvIntakePercentage.text = 48f.toPercentageString() // FIXME : test data
     }
   }
 }

@@ -5,11 +5,11 @@
   android:orientation="vertical">
 
   <include
-    android:id="@+id/tbArchive"
-    layout="@layout/toolbar_archives" />
+    android:id="@+id/tbHistory"
+    layout="@layout/toolbar_intake_history" />
 
   <android.support.v7.widget.RecyclerView
-    android:id="@+id/rvArchive"
+    android:id="@+id/rvHistory"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 

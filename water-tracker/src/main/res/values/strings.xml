@@ -16,4 +16,6 @@
   <string name="main.nav.every_60_mins">Every 60 mins</string>
   <string name="main.nav.refer">Refer a friend</string>
   <string name="main.nav.version_name">Ver %s</string>
+
+  <string name="history.history">History</string>
 </resources>

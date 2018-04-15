@@ -22,7 +22,7 @@
     </activity>
 
     <activity
-      android:name=".ui.archive.ArchiveActivity"
+      android:name=".ui.intakehistory.IntakeHistoryActivity"
       android:parentActivityName=".ui.MainActivity"
       android:screenOrientation="portrait" />
   </application>

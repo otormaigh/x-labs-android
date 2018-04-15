@@ -16,6 +16,7 @@
 
 package ie.elliot.x.labs.watertracker.ui.widget
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -23,6 +24,7 @@ import android.graphics.Path
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.animation.doOnRepeat
 import ie.elliot.x.labs.watertracker.R
 
 class IntakeProgressbar : View {
@@ -44,6 +46,22 @@ class IntakeProgressbar : View {
   }
   private var phase = 0f
   var progress = 0f
+    set(value) {
+      field = value
+      animator.start()
+    }
+
+  // FIXME: Figure out a better way to animate the waves.
+  private val animator by lazy {
+    ValueAnimator.ofFloat(frequency).apply {
+      duration = (frequency * 10).toLong()
+      repeatCount = ValueAnimator.INFINITE
+      doOnRepeat {
+        phase += phaseShift
+        invalidate()
+      }
+    }
+  }
 
   constructor(context: Context) : this(context, null)
   constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -86,8 +104,5 @@ class IntakeProgressbar : View {
       // Draw wave
       canvas.drawPath(path, paint)
     }
-
-    this.phase += phaseShift
-    invalidate() // FIXME: Figure out a better way to animate the waves.
   }
 }

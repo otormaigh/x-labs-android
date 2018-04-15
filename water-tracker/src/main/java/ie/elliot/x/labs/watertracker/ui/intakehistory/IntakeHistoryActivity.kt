@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ie.elliot.x.labs.watertracker.ui.archive
+package ie.elliot.x.labs.watertracker.ui.intakehistory
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,28 +24,28 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import ie.elliot.x.labs.watertracker.R
-import kotlinx.android.synthetic.main.activity_archive.*
-import kotlinx.android.synthetic.main.toolbar_archives.*
+import kotlinx.android.synthetic.main.activity_intake_history.*
+import kotlinx.android.synthetic.main.toolbar_intake_history.*
 
-class ArchiveActivity : AppCompatActivity() {
+class IntakeHistoryActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_archive)
-    setSupportActionBar(tbArchive as Toolbar)
+    setContentView(R.layout.activity_intake_history)
+    setSupportActionBar(tbHistory as Toolbar)
 
     ivClose.setOnClickListener { onBackPressed() }
 
-    rvArchive.apply {
-      adapter = ArchiveRecyclerAdapter()
-      layoutManager = LinearLayoutManager(this@ArchiveActivity, RecyclerView.HORIZONTAL, false)
-      addItemDecoration(DividerItemDecoration(this@ArchiveActivity, DividerItemDecoration.HORIZONTAL))
+    rvHistory.apply {
+      adapter = IntakeHistoryRecyclerAdapter()
+      layoutManager = LinearLayoutManager(this@IntakeHistoryActivity, RecyclerView.HORIZONTAL, false)
+      addItemDecoration(DividerItemDecoration(this@IntakeHistoryActivity, DividerItemDecoration.HORIZONTAL))
     }
   }
 
   companion object {
     fun launch(activity: AppCompatActivity) {
-      activity.startActivity(Intent(activity, ArchiveActivity::class.java))
+      activity.startActivity(Intent(activity, IntakeHistoryActivity::class.java))
     }
   }
 }

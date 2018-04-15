@@ -23,7 +23,7 @@ import android.support.v7.widget.Toolbar
 import ie.elliot.x.labs.watertracker.BuildConfig
 import ie.elliot.x.labs.watertracker.R
 import ie.elliot.x.labs.watertracker.extension.toPercentageString
-import ie.elliot.x.labs.watertracker.ui.archive.ArchiveActivity
+import ie.elliot.x.labs.watertracker.ui.intakehistory.IntakeHistoryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
@@ -36,10 +36,11 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
     setSupportActionBar(tbMain as Toolbar)
 
+    // FIXME : test data
     setIntakePercentage(0.3f)
 
     ivMenu.setOnClickListener { navDrawer.openDrawer(GravityCompat.END) }
-    ivHistory.setOnClickListener { ArchiveActivity.launch(this@MainActivity) }
+    ivHistory.setOnClickListener { IntakeHistoryActivity.launch(this@MainActivity) }
 
     tvVersionName.text = getString(R.string.main_nav_version_name, BuildConfig.VERSION_NAME)
   }
