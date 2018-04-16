@@ -64,10 +64,10 @@
     <TextView
       android:id="@+id/tvDailyGoalValue"
       style="@style/Main.ItemValue"
-      android:text="@string/main.nav.1500ml"
       app:layout_constraintBottom_toBottomOf="@id/tvDailyGoalTitle"
       app:layout_constraintStart_toEndOf="@id/tvDailyGoalTitle"
-      app:layout_constraintTop_toTopOf="@id/tvDailyGoalTitle" />
+      app:layout_constraintTop_toTopOf="@id/tvDailyGoalTitle"
+      tools:text="1500ml" />
 
     <TextView
       android:id="@+id/tvCupSizeTitle"

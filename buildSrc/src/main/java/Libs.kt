@@ -15,9 +15,12 @@ object Libs {
   // Arch
   const val arch_room_runtime = "android.arch.persistence.room:runtime:${Version.arch_persistence}"
   const val arch_room_compiler = "android.arch.persistence.room:compiler:${Version.arch_persistence}"
+  const val arch_lifecycle_ext = "android.arch.lifecycle:extensions:${Version.arch_lifecycle}"
 
   // Kotlin
   const val kotlin_jre7 = "org.jetbrains.kotlin:kotlin-stdlib-jre7:${Version.kotlin}"
+  const val coroutine_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
+  const val coroutine_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutines}"
 
   // Misc
   const val timber = "com.jakewharton.timber:timber:4.7.0"

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5a43adfbca0497f1b6784ad05d6b8afb",
+    "identityHash": "226636065bc7a72de4c3c65d3a37ecd9",
     "entities": [
       {
         "tableName": "user",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `intakeGoal` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `dailyIntakeGoal` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "uid",
@@ -15,8 +15,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "intakeGoal",
-            "columnName": "intakeGoal",
+            "fieldPath": "dailyIntakeGoal",
+            "columnName": "dailyIntakeGoal",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -32,7 +32,7 @@
       },
       {
         "tableName": "intake_History",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER NOT NULL, `intakePercentage` REAL NOT NULL, `intakeGoal` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date_time` INTEGER NOT NULL, `consumed` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "uid",
@@ -41,20 +41,14 @@
             "notNull": true
           },
           {
-            "fieldPath": "date",
-            "columnName": "date",
+            "fieldPath": "dateTime",
+            "columnName": "date_time",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "intakePercentage",
-            "columnName": "intakePercentage",
-            "affinity": "REAL",
-            "notNull": true
-          },
-          {
-            "fieldPath": "intakeGoal",
-            "columnName": "intakeGoal",
+            "fieldPath": "consumed",
+            "columnName": "consumed",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -71,7 +65,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5a43adfbca0497f1b6784ad05d6b8afb\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"226636065bc7a72de4c3c65d3a37ecd9\")"
     ]
   }
 }

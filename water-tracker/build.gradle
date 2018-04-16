@@ -62,6 +62,9 @@ android {
 
 dependencies {
   implementation Libs.kotlin_jre7
+  implementation Libs.coroutine_android
+  implementation Libs.coroutine_core
+
   implementation Libs.appcompat_v7
   implementation Libs.constraint_layout
   implementation Libs.design
@@ -70,6 +73,7 @@ dependencies {
   implementation Libs.timber
   implementation Libs.android_ktx
 
+  implementation Libs.arch_lifecycle_ext
   implementation Libs.arch_room_runtime
   kapt Libs.arch_room_compiler
 
@@ -81,4 +85,10 @@ dependencies {
 
 androidExtensions {
   experimental = true
+}
+
+kotlin {
+  experimental {
+    coroutines 'enable'
+  }
 }

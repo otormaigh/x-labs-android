@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ie.elliot.x.labs.watertracker.ui
+package ie.elliot.x.labs.watertracker.ui.home
 
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
@@ -22,19 +22,23 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import ie.elliot.x.labs.watertracker.BuildConfig
 import ie.elliot.x.labs.watertracker.R
+import ie.elliot.x.labs.watertracker.app
 import ie.elliot.x.labs.watertracker.extension.formatDate
 import ie.elliot.x.labs.watertracker.extension.toStyledPercentageString
+import ie.elliot.x.labs.watertracker.extension.viewModelProvider
 import ie.elliot.x.labs.watertracker.ui.history.HistoryActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.drawer_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), HomeView {
+  private val viewModel by viewModelProvider { HomeViewModel(this, app.database) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(R.layout.activity_home)
     setSupportActionBar(tbMain as Toolbar)
+    viewModel.onCreate()
 
     tvDate.text = System.currentTimeMillis().formatDate("EEE, dd MMM yyyy")
 
@@ -42,12 +46,17 @@ class MainActivity : AppCompatActivity() {
     setIntakePercentage(0.3f)
 
     ivMenu.setOnClickListener { navDrawer.openDrawer(GravityCompat.END) }
-    ivHistory.setOnClickListener { HistoryActivity.launch(this@MainActivity) }
+    ivHistory.setOnClickListener { HistoryActivity.launch(this@HomeActivity) }
     ivWater.setOnClickListener {
       intakeProgressWheel.animateIn()
     }
 
     tvVersionName.text = getString(R.string.main_nav_version_name, BuildConfig.VERSION_NAME)
+  }
+
+  override fun setDailyIntake(currentIntake: Long, intakeGoal: Long) {
+    tvTodaysIntake.text = "$currentIntake / ${intakeGoal}ml"
+    tvDailyGoalValue.text = "${intakeGoal}ml"
   }
 
   private fun setIntakePercentage(intake: Float) {

@@ -13,6 +13,10 @@ object Version {
   // android.arch.persistence
   const val arch_persistence = "1.1.0-beta2"
 
+  // android.arch.lifecycle
+  const val arch_lifecycle = "1.1.1"
+
   // Kotlin
   const val kotlin = "1.2.31"
+  const val coroutines = "0.22.5"
 }

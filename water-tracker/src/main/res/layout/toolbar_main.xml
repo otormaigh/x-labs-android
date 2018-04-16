@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:elevation="0dp">
@@ -26,11 +27,11 @@
       android:id="@+id/tvTodaysIntake"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="0 / 1,500ml"
       android:textColor="@color/grey"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+      app:layout_constraintTop_toBottomOf="@+id/tvDate"
+      tools:text="0 / 1,500ml" />
 
     <ImageView
       android:id="@+id/ivHistory"

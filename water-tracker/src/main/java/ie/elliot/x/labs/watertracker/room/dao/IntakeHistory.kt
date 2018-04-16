@@ -16,26 +16,23 @@
 
 package ie.elliot.x.labs.watertracker.room.dao
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.CLASS_NAME
-import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.DATE
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.DATE_TIME
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.ID
 
 @Entity(tableName = CLASS_NAME)
 data class IntakeHistory(
     @PrimaryKey(autoGenerate = true)
-    var uid: Int = 0,
-    val date: Long,
-    val intakePercentage: Float,
-    val intakeGoal: Int
+    val uid: Int = 0,
+    @ColumnInfo(name = DATE_TIME)
+    val dateTime: Long = System.currentTimeMillis(),
+    val consumed: Long
 ) {
   object Key {
     const val CLASS_NAME = "intake_History"
     const val ID = "uid"
-    const val DATE = "date"
+    const val DATE_TIME = "date_time"
   }
 }
 
@@ -50,6 +47,6 @@ abstract class IntakeHistoryDao : BaseDao<IntakeHistory> {
   @Query("SELECT * from $CLASS_NAME where $ID = :id")
   abstract fun get(id: String): IntakeHistory
 
-  @Query("SELECT * from $CLASS_NAME where $DATE > :date")
+  @Query("SELECT * from $CLASS_NAME where $DATE_TIME > :date")
   abstract fun getSinceDate(date: Long): List<IntakeHistory>
 }

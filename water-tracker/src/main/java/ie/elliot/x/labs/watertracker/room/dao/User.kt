@@ -21,29 +21,26 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import android.arch.persistence.room.Query
 import ie.elliot.x.labs.watertracker.room.dao.User.Key.CLASS_NAME
-import ie.elliot.x.labs.watertracker.room.dao.User.Key.ID
-
 
 @Entity(tableName = CLASS_NAME)
 data class User(
     @PrimaryKey(autoGenerate = true)
     var uid: Int = 0,
-    var intakeGoal: Long = 0
+    var dailyIntakeGoal: Long = 0
 ) {
   object Key {
     const val CLASS_NAME = "user"
-    const val ID = "uid"
   }
 }
 
 @Dao
-abstract class UserDao {
+abstract class UserDao : BaseDao<User> {
   @Query("DELETE from $CLASS_NAME")
   abstract fun deleteAll()
 
   @Query("SELECT * from $CLASS_NAME")
   abstract fun getAll(): List<User>
 
-  @Query("SELECT * from $CLASS_NAME where $ID = :id")
-  abstract fun get(id: String): User
+  @Query("SELECT * from $CLASS_NAME limit 1")
+  abstract fun get(): User
 }
