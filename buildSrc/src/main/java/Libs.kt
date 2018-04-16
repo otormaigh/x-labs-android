@@ -1,4 +1,10 @@
 object Libs {
+  // Testing
+  const val assert_j = "com.squareup.assertj:assertj-android:1.2.0"
+  const val junit = "junit:junit:4.12"
+  const val test_runner = "com.android.support.test:runner:1.0.1"
+  const val esspresso_core = "com.android.support.test.espresso:espresso-core:${Version.espresso}"
+
   // Android
   const val appcompat_v7 = "com.android.support:appcompat-v7:${Version.android_support}"
   const val recyclerview = "com.android.support:recyclerview-v7:${Version.android_support}"

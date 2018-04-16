@@ -23,7 +23,7 @@ import android.support.v7.widget.Toolbar
 import ie.elliot.x.labs.watertracker.BuildConfig
 import ie.elliot.x.labs.watertracker.R
 import ie.elliot.x.labs.watertracker.extension.formatDate
-import ie.elliot.x.labs.watertracker.extension.toPercentageString
+import ie.elliot.x.labs.watertracker.extension.toStyledPercentageString
 import ie.elliot.x.labs.watertracker.ui.history.HistoryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.drawer_main.*
@@ -53,6 +53,6 @@ class MainActivity : AppCompatActivity() {
   private fun setIntakePercentage(intake: Float) {
     pbIntake.progress = intake
 
-    tvIntakePercentage.text = intake.toPercentageString()
+    tvIntakePercentage.text = intake.toStyledPercentageString()
   }
 }

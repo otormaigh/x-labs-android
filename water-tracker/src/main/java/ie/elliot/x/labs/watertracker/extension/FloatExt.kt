@@ -18,9 +18,18 @@ package ie.elliot.x.labs.watertracker.extension
 
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
+import java.text.DecimalFormat
 
-fun Float.toPercentageString(): SpannableString {
-  val source = "${this.toInt()}%"
+
+/**
+ * Expected input in the format:
+ * 0.1 = 10%
+ * 0.2 = 20%
+ * ...
+ * 1.0 = 100%
+ */
+fun Float.toStyledPercentageString(): SpannableString {
+  val source = DecimalFormat("0%").format(this)
   return SpannableString(source).apply {
     setSpan(RelativeSizeSpan(2f), 0, source.length - 1, 0)
   }

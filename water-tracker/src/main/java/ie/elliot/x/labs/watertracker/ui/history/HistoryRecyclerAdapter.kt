@@ -23,7 +23,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ie.elliot.x.labs.watertracker.R
-import ie.elliot.x.labs.watertracker.extension.toPercentageString
+import ie.elliot.x.labs.watertracker.extension.toStyledPercentageString
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_history.*
@@ -42,22 +42,24 @@ class HistoryRecyclerAdapter : RecyclerView.Adapter<HistoryRecyclerAdapter.ViewH
 
   inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
     fun bind() {
-      tvIntakePercentage.text = 48f.toPercentageString() // FIXME : test data
+      tvIntakePercentage.text = 0.48f.toStyledPercentageString() // FIXME : test data
 
       rvHistoryDetail.apply {
         adapter = HistoryDetailRecyclerAdapter()
         layoutManager = LinearLayoutManager(context)
-        addItemDecoration(object : RecyclerView.ItemDecoration() {
-          override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-            super.getItemOffsets(outRect, view, parent, state)
-            val padding = view.resources.getDimension(R.dimen.vertical_margin_half).toInt()
-            outRect.bottom = padding
-            // Only add top padding to the first item
-            if (parent.getChildAdapterPosition(view) == 0) {
-              outRect.top = padding
+        if (itemDecorationCount == 0) {
+          addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+              super.getItemOffsets(outRect, view, parent, state)
+              val padding = view.resources.getDimension(R.dimen.vertical_margin_half).toInt()
+              outRect.bottom = padding
+              // Only add top padding to the first item
+              if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.top = padding
+              }
             }
-          }
-        })
+          })
+        }
       }
     }
   }

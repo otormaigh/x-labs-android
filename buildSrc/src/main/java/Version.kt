@@ -4,6 +4,9 @@ object Version {
   const val min_sdk = 19
   const val target_sdk = 27
 
+  // com.android.support.test
+  const val espresso = "3.0.2-alpha1"
+
   // com.android.support
   const val android_support = "27.1.1"
 

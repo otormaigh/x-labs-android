@@ -12,6 +12,7 @@ android {
     versionCode 1
     versionName "1.0"
     resConfig "en"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     vectorDrawables.useSupportLibrary = true
     archivesBaseName = "$project.name-$versionName"
@@ -71,6 +72,11 @@ dependencies {
 
   implementation Libs.arch_room_runtime
   kapt Libs.arch_room_compiler
+
+  testImplementation Libs.junit
+  androidTestImplementation Libs.assert_j
+  androidTestImplementation Libs.test_runner
+  androidTestImplementation Libs.esspresso_core
 }
 
 androidExtensions {
