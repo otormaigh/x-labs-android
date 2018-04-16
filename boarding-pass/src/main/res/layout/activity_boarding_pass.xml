@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <TextView
+      android:id="@+id/tvHeader"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:background="@color/cornflower_blue"
+      android:paddingStart="@dimen/horizontal_margin"
+      android:paddingTop="@dimen/vertical_margin"
+      android:paddingEnd="@dimen/horizontal_margin"
+      android:paddingBottom="@dimen/vertical_margin"
+      android:text="Aeroflot"
+      android:textAlignment="center"
+      android:textAllCaps="true"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+      android:textColor="@color/white"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/tvAirportIataDepart"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="true"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Display2"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tvHeader"
+      tools:text="MOW" />
+
+    <TextView
+      android:id="@+id/tvAirportDepart"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="@id/tvAirportIataDepart"
+      app:layout_constraintTop_toBottomOf="@id/tvAirportIataArrive"
+      tools:text="Moscow" />
+
+    <ImageView
+      android:id="@+id/ivArrow"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/horizontal_margin"
+      app:layout_constraintBottom_toBottomOf="@id/tvAirportIataDepart"
+      app:layout_constraintEnd_toStartOf="@id/tvAirportIataArrive"
+      app:layout_constraintStart_toEndOf="@id/tvAirportIataDepart"
+      app:layout_constraintTop_toTopOf="@id/tvAirportIataDepart"
+      app:srcCompat="@drawable/ic_greater_than" />
+
+    <TextView
+      android:id="@+id/tvAirportIataArrive"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/horizontal_margin"
+      android:textAllCaps="true"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Display2"
+      app:layout_constraintStart_toEndOf="@id/ivArrow"
+      app:layout_constraintTop_toBottomOf="@id/tvHeader"
+      tools:text="SFO" />
+
+    <TextView
+      android:id="@+id/tvAirportArrive"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/horizontal_margin"
+      app:layout_constraintEnd_toEndOf="@id/tvAirportIataArrive"
+      app:layout_constraintTop_toBottomOf="@id/tvAirportIataArrive"
+      tools:text="San Francisco" />
+
+    <View
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="@color/solitude"
+      app:layout_constraintBottom_toBottomOf="@id/tvFlightNum"
+      app:layout_constraintEnd_toEndOf="@id/tvGateTitle"
+      app:layout_constraintStart_toStartOf="@id/tvFlightTitle"
+      app:layout_constraintTop_toTopOf="@id/tvFlightTitle" />
+
+    <TextView
+      android:id="@+id/tvFlightTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/vertical_margin"
+      android:paddingStart="@dimen/horizontal_margin_half"
+      android:paddingTop="@dimen/horizontal_margin_half"
+      android:text="Flight"
+      app:layout_constraintTop_toBottomOf="@id/tvAirportDepart" />
+
+    <TextView
+      android:id="@+id/tvFlightNum"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/vertical_margin_half"
+      android:paddingStart="@dimen/horizontal_margin_half"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+      app:layout_constraintTop_toBottomOf="@id/tvFlightTitle"
+      tools:text="SU106" />
+
+    <TextView
+      android:id="@+id/tvSeatTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/horizontal_margin"
+      android:text="Seat"
+      app:layout_constraintBottom_toBottomOf="@id/tvFlightTitle"
+      app:layout_constraintEnd_toStartOf="@id/tvGateTitle" />
+
+    <TextView
+      android:id="@+id/tvSeatNum"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/vertical_margin_half"
+      android:textAlignment="center"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toEndOf="@id/tvSeatTitle"
+      app:layout_constraintStart_toStartOf="@id/tvSeatTitle"
+      app:layout_constraintTop_toBottomOf="@id/tvSeatTitle"
+      tools:text="13" />
+
+    <TextView
+      android:id="@+id/tvGateTitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingEnd="@dimen/horizontal_margin_half"
+      android:text="Gate"
+      app:layout_constraintBottom_toBottomOf="@id/tvFlightTitle"
+      app:layout_constraintEnd_toEndOf="@id/tvAirportArrive" />
+
+    <TextView
+      android:id="@+id/tvGateNum"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/vertical_margin_half"
+      android:textAlignment="center"
+      android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toEndOf="@id/tvGateTitle"
+      app:layout_constraintStart_toStartOf="@id/tvGateTitle"
+      app:layout_constraintTop_toBottomOf="@id/tvGateTitle"
+      tools:text="37" />
+
+  </android.support.constraint.ConstraintLayout>
+</FrameLayout>

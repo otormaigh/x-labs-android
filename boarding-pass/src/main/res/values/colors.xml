@@ -3,4 +3,13 @@
   <color name="colorPrimary">#3F51B5</color>
   <color name="colorPrimaryDark">#303F9F</color>
   <color name="colorAccent">#FF4081</color>
+
+  <color name="white">#FFFFFF</color>
+
+  <color name="alice_blue">#F4F8FF</color>
+  <color name="solitude">#DEE6F5</color>
+  <color name="cornflower_blue">#4985FF</color>
+  <color name="hawkes_blue">#D0D6E2</color>
+  <color name="east_bay">#4A5261</color>
+  <color name="mischka">#9DA1AB</color>
 </resources>
