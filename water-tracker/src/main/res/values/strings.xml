@@ -1,0 +1,20 @@
+<resources>
+  <string name="app_name">Water Tracker</string>
+
+  <!-- activity_main -->
+  <string name="main.how_much_water">How much water did you drink?</string>
+
+  <string name="main.nav.drink_water">Drink Water</string>
+  <string name="main.nav.general">General</string>
+  <string name="main.nav.daily_goal">Daily Goal</string>
+  <string name="main.nav.per_cup">Per cup</string>
+  <string name="main.nav.100ml">100ml</string>
+  <string name="main.nav.app_settings">App Settings</string>
+  <string name="main.nav.notifications">Notifications</string>
+  <string name="main.nav.set_reminder">Set Reminder</string>
+  <string name="main.nav.every_60_mins">Every 60 mins</string>
+  <string name="main.nav.refer">Refer a friend</string>
+  <string name="main.nav.version_name">Ver %s</string>
+
+  <string name="history.history">History</string>
+</resources>

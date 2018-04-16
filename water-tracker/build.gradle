@@ -1,0 +1,94 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion Version.compile_sdk
+  defaultConfig {
+    applicationId "ie.elliot.x.labs.watertracker"
+    minSdkVersion Version.min_sdk
+    targetSdkVersion Version.target_sdk
+    versionCode 1
+    versionName "1.0"
+    resConfig "en"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    vectorDrawables.useSupportLibrary = true
+    archivesBaseName = "$project.name-$versionName"
+
+    // https://stackoverflow.com/questions/44322178/room-schema-export-directory-is-not-provided-to-the-annotation-processor-so-we
+    javaCompileOptions {
+      annotationProcessorOptions {
+        arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+      }
+    }
+  }
+
+  signingConfigs {
+    release {
+      storeFile file(Keystore.releaseStore)
+      storePassword Keystore.getStorePassword(project)
+      keyAlias Keystore.getKeyAlias(project)
+      keyPassword Keystore.getKeyPassword(project)
+    }
+
+    debug {
+      storeFile file(Keystore.debugStore)
+    }
+  }
+
+  buildTypes {
+    debug {
+      applicationIdSuffix ".debug"
+      signingConfig signingConfigs.debug
+    }
+    release {
+      if (file(Keystore.releaseStore).exists()) {
+        signingConfig signingConfigs.release
+      } else {
+        signingConfig signingConfigs.debug
+      }
+      postprocessing {
+        proguardFiles 'proguard-rules.pro'
+        removeUnusedResources = true
+        removeUnusedCode = true
+        optimizeCode = true
+        obfuscate = true
+      }
+    }
+  }
+}
+
+dependencies {
+  implementation Libs.kotlin_jre7
+  implementation Libs.coroutine_android
+  implementation Libs.coroutine_core
+
+  implementation Libs.appcompat_v7
+  implementation Libs.constraint_layout
+  implementation Libs.design
+  implementation Libs.recyclerview
+
+  implementation Libs.timber
+  implementation Libs.android_ktx
+
+  implementation Libs.arch_lifecycle_ext
+  implementation Libs.arch_room_runtime
+  kapt Libs.arch_room_compiler
+
+  testImplementation Libs.junit
+  androidTestImplementation Libs.assert_j
+  androidTestImplementation Libs.test_runner
+  androidTestImplementation Libs.esspresso_core
+}
+
+androidExtensions {
+  experimental = true
+}
+
+kotlin {
+  experimental {
+    coroutines 'enable'
+  }
+}
