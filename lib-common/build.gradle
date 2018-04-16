@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+
+android {
+  compileSdkVersion Version.compile_sdk
+  defaultConfig {
+    minSdkVersion Version.min_sdk
+    targetSdkVersion Version.target_sdk
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      postprocessing {
+        consumerProguardFiles 'proguard-rules.pro'
+        removeUnusedCode = true
+        optimizeCode = true
+        obfuscate = true
+      }
+    }
+  }
+}
+
+dependencies {
+  api Libs.kotlin_jre7
+  api Libs.timber
+}

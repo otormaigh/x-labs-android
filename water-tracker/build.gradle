@@ -61,7 +61,8 @@ android {
 }
 
 dependencies {
-  implementation Libs.kotlin_jre7
+  implementation project(':lib-common')
+
   implementation Libs.coroutine_android
   implementation Libs.coroutine_core
 
@@ -70,7 +71,6 @@ dependencies {
   implementation Libs.design
   implementation Libs.recyclerview
 
-  implementation Libs.timber
   implementation Libs.android_ktx
 
   implementation Libs.arch_lifecycle_ext

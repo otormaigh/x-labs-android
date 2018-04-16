@@ -16,9 +16,9 @@
 
 package ie.elliot.x.labs.watertracker
 
-import android.app.Application
 import android.arch.persistence.room.Room
 import android.content.Context
+import ie.elliot.x.labs.lib.common.TimberApplication
 import ie.elliot.x.labs.watertracker.extension.random
 import ie.elliot.x.labs.watertracker.room.WaterTrackerDatabase
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
@@ -28,10 +28,9 @@ import ie.elliot.x.labs.watertracker.toolbox.prefs
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.withContext
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-class WaterTrackerApplication : Application() {
+class WaterTrackerApplication : TimberApplication() {
   val database by lazy {
     Room.databaseBuilder(applicationContext, WaterTrackerDatabase::class.java, "water-tracker-db")
         .fallbackToDestructiveMigration()
@@ -43,17 +42,6 @@ class WaterTrackerApplication : Application() {
 
     initTimber(BuildConfig.DEBUG)
     initRoom()
-  }
-
-  private fun initTimber(isDebug: Boolean) {
-    @Suppress("ConstantConditionIf")
-    if (isDebug) {
-      Timber.plant(object : Timber.DebugTree() {
-        override fun createStackElementTag(element: StackTraceElement): String {
-          return "(${element.fileName}:${element.lineNumber})"
-        }
-      })
-    }
   }
 
   private fun initRoom() {
