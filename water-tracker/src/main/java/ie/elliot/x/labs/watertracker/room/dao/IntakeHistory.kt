@@ -18,21 +18,30 @@ package ie.elliot.x.labs.watertracker.room.dao
 
 import android.arch.persistence.room.*
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.CLASS_NAME
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.DATE
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.DATE_TIME
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.ID
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.TIME
+import org.threeten.bp.LocalDate
+import org.threeten.bp.OffsetDateTime
+import org.threeten.bp.OffsetTime
 
 @Entity(tableName = CLASS_NAME)
 data class IntakeHistory(
     @PrimaryKey(autoGenerate = true)
     val uid: Int = 0,
     @ColumnInfo(name = DATE_TIME)
-    val dateTime: Long = System.currentTimeMillis(),
+    val dateTime: OffsetDateTime = OffsetDateTime.now(),
+    val date: LocalDate = dateTime.toLocalDate(),
+    val time: OffsetTime = dateTime.toOffsetTime(),
     val consumed: Long
 ) {
   object Key {
     const val CLASS_NAME = "intake_History"
     const val ID = "uid"
     const val DATE_TIME = "date_time"
+    const val DATE = "date"
+    const val TIME = "time"
   }
 }
 
@@ -45,8 +54,11 @@ abstract class IntakeHistoryDao : BaseDao<IntakeHistory> {
   abstract fun getAll(): List<IntakeHistory>
 
   @Query("SELECT * from $CLASS_NAME where $ID = :id")
-  abstract fun get(id: String): IntakeHistory
+  abstract fun get(id: Int): IntakeHistory
 
-  @Query("SELECT * from $CLASS_NAME where $DATE_TIME > :date")
-  abstract fun getSinceDate(date: Long): List<IntakeHistory>
+  @Query("SELECT * from $CLASS_NAME where $DATE=:localDate")
+  abstract fun getOnDate(localDate: LocalDate): List<IntakeHistory>
+
+  @Query("SELECT $DATE from $CLASS_NAME GROUP BY $DATE ORDER BY $TIME")
+  abstract fun getDates(): List<LocalDate>
 }

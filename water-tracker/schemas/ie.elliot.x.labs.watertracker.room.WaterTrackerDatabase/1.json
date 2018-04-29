@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "226636065bc7a72de4c3c65d3a37ecd9",
+    "identityHash": "e277601637c75877c2ad94b53aee3302",
     "entities": [
       {
         "tableName": "user",
@@ -32,7 +32,7 @@
       },
       {
         "tableName": "intake_History",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date_time` INTEGER NOT NULL, `consumed` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date_time` TEXT NOT NULL, `date` TEXT NOT NULL, `time` TEXT NOT NULL, `consumed` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "uid",
@@ -43,7 +43,19 @@
           {
             "fieldPath": "dateTime",
             "columnName": "date_time",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -65,7 +77,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"226636065bc7a72de4c3c65d3a37ecd9\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e277601637c75877c2ad94b53aee3302\")"
     ]
   }
 }

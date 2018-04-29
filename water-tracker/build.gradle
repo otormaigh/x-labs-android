@@ -77,6 +77,8 @@ dependencies {
   implementation Libs.arch_room_runtime
   kapt Libs.arch_room_compiler
 
+  implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
+
   testImplementation Libs.junit
   androidTestImplementation Libs.assert_j
   androidTestImplementation Libs.test_runner

@@ -21,19 +21,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ie.elliot.x.labs.watertracker.R
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.list_item_history_detail.*
 
-class HistoryDetailRecyclerAdapter : RecyclerView.Adapter<HistoryDetailRecyclerAdapter.ViewHolder>() {
+class HistoryDetailRecyclerAdapter(private val intakeHistory: List<IntakeHistory>) : RecyclerView.Adapter<HistoryDetailRecyclerAdapter.ViewHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
       ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_history_detail, parent, false))
 
-  override fun getItemCount() = 50
+  override fun getItemCount() = intakeHistory.size
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    holder.bind()
+    holder.bind(intakeHistory[position])
   }
 
   inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-    fun bind() {}
+    fun bind(intakeHistory: IntakeHistory) {
+      tvDataItem.text = containerView.context.getString(R.string.history_detail_list_item, intakeHistory.dateTime.hour, intakeHistory.dateTime.minute, intakeHistory.consumed)
+    }
   }
 }

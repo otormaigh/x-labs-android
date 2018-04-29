@@ -27,34 +27,43 @@ import ie.elliot.x.labs.watertracker.extension.toStyledPercentageString
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_history.*
+import org.threeten.bp.format.DateTimeFormatter
 
-class HistoryRecyclerAdapter : RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHolder>() {
-  private var data = listOf<IntakeHistory>()
-
+class HistoryRecyclerAdapter(private val data: List<List<IntakeHistory>>) : RecyclerView.Adapter<HistoryRecyclerAdapter.ViewHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
       ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_history, parent, false))
 
-  override fun getItemCount() = 20
+  override fun getItemCount() = data.size
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    holder.bind()
+    holder.bind(data[position])
   }
 
   inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
-    fun bind() {
-      tvIntakePercentage.text = 0.48f.toStyledPercentageString() // FIXME : test data
+    fun bind(intakeHistory: List<IntakeHistory>) {
+      val intakeGoal = 1500
+      val intakeOnDay = intakeHistory.sumBy { it.consumed.toInt() }
+
+      intakeHistory.first().dateTime.let {date ->
+        tvDate.text = containerView.context.getString(R.string.history_date,
+            date.format(DateTimeFormatter.ofPattern("EEEE")),
+            date.format(DateTimeFormatter.ofPattern("dd MMM yyyy")))
+      }
+      tvIntakePercentage.text = (intakeOnDay / intakeGoal.toFloat()).toStyledPercentageString()
+      tvIntake.text = containerView.context.getString(R.string.history_intake, intakeOnDay, intakeGoal)
 
       rvHistoryDetail.apply {
-        adapter = HistoryDetailRecyclerAdapter()
+        adapter = HistoryDetailRecyclerAdapter(intakeHistory)
         layoutManager = LinearLayoutManager(context)
+
         if (itemDecorationCount == 0) {
           addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
               super.getItemOffsets(outRect, view, parent, state)
               val padding = view.resources.getDimension(R.dimen.vertical_margin_half).toInt()
               outRect.bottom = padding
-              // Only add top padding to the first item
-              if (parent.getChildAdapterPosition(view) == 0) {
+
+              if (parent.getChildAdapterPosition(view) != 0) {
                 outRect.top = padding
               }
             }

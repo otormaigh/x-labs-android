@@ -24,9 +24,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import ie.elliot.x.labs.watertracker.R
+import ie.elliot.x.labs.watertracker.app
 import ie.elliot.x.labs.watertracker.extension.formatDate
+import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
 import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.toolbar_intake_history.*
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.experimental.withContext
+import org.threeten.bp.temporal.ChronoUnit
+import timber.log.Timber
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -39,10 +46,21 @@ class HistoryActivity : AppCompatActivity() {
     val dateString = System.currentTimeMillis().formatDate("MMM, yyyy")
     tvDateSummary.text = "$dateString - 2,326L" // FIXME: test data
 
-    rvHistory.apply {
-      adapter = HistoryRecyclerAdapter()
-      layoutManager = LinearLayoutManager(this@HistoryActivity, RecyclerView.HORIZONTAL, false)
-      addItemDecoration(DividerItemDecoration(this@HistoryActivity, DividerItemDecoration.HORIZONTAL))
+    launch {
+      rvHistory.apply {
+        val data = mutableListOf<List<IntakeHistory>>()
+        val dates = app.database.history().getDates()
+        dates.forEach { date ->
+          val history = app.database.history().getOnDate(date)
+          data.add(history)
+        }
+
+        withContext(UI) {
+          adapter = HistoryRecyclerAdapter(data)
+          layoutManager = LinearLayoutManager(this@HistoryActivity, RecyclerView.HORIZONTAL, false)
+          addItemDecoration(DividerItemDecoration(this@HistoryActivity, DividerItemDecoration.HORIZONTAL))
+        }
+      }
     }
   }
 

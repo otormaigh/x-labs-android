@@ -16,5 +16,9 @@
   <string name="main.nav.refer">Refer a friend</string>
   <string name="main.nav.version_name">Ver %s</string>
 
+  <string name="history.date">%s\n%s</string>
   <string name="history.history">History</string>
+  <string name="history.intake">%d / %d ml</string>
+
+  <string name="history_detail.list_item">%02d:%02d - %d ml</string>
 </resources>

@@ -12,7 +12,7 @@
     android:id="@+id/tvDate"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:fontFamily="sans-serif-light"
+    android:fontFamily="sans-serif-medium"
     android:text="Tuesday\n26 Nov 2018"
     android:textAlignment="center"
     android:textSize="18sp"

@@ -18,6 +18,7 @@ package ie.elliot.x.labs.watertracker
 
 import android.arch.persistence.room.Room
 import android.content.Context
+import com.jakewharton.threetenabp.AndroidThreeTen
 import ie.elliot.x.labs.lib.common.TimberApplication
 import ie.elliot.x.labs.watertracker.extension.random
 import ie.elliot.x.labs.watertracker.room.WaterTrackerDatabase
@@ -28,7 +29,7 @@ import ie.elliot.x.labs.watertracker.toolbox.prefs
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.withContext
-import java.util.concurrent.TimeUnit
+import org.threeten.bp.OffsetDateTime
 
 class WaterTrackerApplication : TimberApplication() {
   val database by lazy {
@@ -41,6 +42,7 @@ class WaterTrackerApplication : TimberApplication() {
     super.onCreate()
 
     initTimber(BuildConfig.DEBUG)
+    AndroidThreeTen.init(this)
     initRoom()
   }
 
@@ -49,13 +51,14 @@ class WaterTrackerApplication : TimberApplication() {
       launch {
         database.user().insert(User(dailyIntakeGoal = 1500))
 
+        val startTime = OffsetDateTime.now().plusDays(3)
         for (i in 0 until 10) {
-          val dateTime = System.currentTimeMillis() - (i * TimeUnit.DAYS.toMillis(1))
+          val dateTime = startTime.minusDays(i.toLong())
 
           for (j in 0 until 20) {
             database.history().insert(
                 IntakeHistory(
-                    dateTime = dateTime,
+                    dateTime = dateTime.plusMinutes((10..35).random().toLong()),
                     consumed = (10..150).random().toLong())
             )
           }

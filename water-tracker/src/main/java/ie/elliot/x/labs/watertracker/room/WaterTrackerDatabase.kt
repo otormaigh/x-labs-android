@@ -18,11 +18,14 @@ package ie.elliot.x.labs.watertracker.room
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.TypeConverters
+import ie.elliot.x.labs.watertracker.room.converter.DateTimeConverter
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistoryDao
 import ie.elliot.x.labs.watertracker.room.dao.User
 import ie.elliot.x.labs.watertracker.room.dao.UserDao
 
+@TypeConverters(value = [DateTimeConverter::class])
 @Database(entities = [User::class, IntakeHistory::class], version = 1)
 abstract class WaterTrackerDatabase : RoomDatabase() {
   abstract fun user(): UserDao
