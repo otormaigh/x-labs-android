@@ -21,7 +21,6 @@ import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.CLASS_NAME
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.DATE
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.DATE_TIME
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.ID
-import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory.Key.TIME
 import org.threeten.bp.LocalDate
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.OffsetTime
@@ -34,7 +33,7 @@ data class IntakeHistory(
     val dateTime: OffsetDateTime = OffsetDateTime.now(),
     val date: LocalDate = dateTime.toLocalDate(),
     val time: OffsetTime = dateTime.toOffsetTime(),
-    val consumed: Long
+    val consumed: Int
 ) {
   object Key {
     const val CLASS_NAME = "intake_History"
@@ -56,9 +55,11 @@ abstract class IntakeHistoryDao : BaseDao<IntakeHistory> {
   @Query("SELECT * from $CLASS_NAME where $ID = :id")
   abstract fun get(id: Int): IntakeHistory
 
-  @Query("SELECT * from $CLASS_NAME where $DATE=:localDate")
+  @Query("SELECT * from $CLASS_NAME where $DATE=:localDate ORDER BY $DATE_TIME DESC")
   abstract fun getOnDate(localDate: LocalDate): List<IntakeHistory>
 
-  @Query("SELECT $DATE from $CLASS_NAME GROUP BY $DATE ORDER BY $TIME")
+  @Query("SELECT $DATE from $CLASS_NAME GROUP BY $DATE ORDER BY $DATE DESC")
   abstract fun getDates(): List<LocalDate>
 }
+
+fun List<IntakeHistory>.totalConsumed() = sumBy { it.consumed }

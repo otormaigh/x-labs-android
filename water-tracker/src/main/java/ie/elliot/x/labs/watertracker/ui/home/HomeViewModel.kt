@@ -18,17 +18,22 @@ package ie.elliot.x.labs.watertracker.ui.home
 
 import android.arch.lifecycle.ViewModel
 import ie.elliot.x.labs.watertracker.room.WaterTrackerDatabase
+import ie.elliot.x.labs.watertracker.room.dao.totalConsumed
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.withContext
+import org.threeten.bp.OffsetDateTime
 
 class HomeViewModel(private val view: HomeView, private val database: WaterTrackerDatabase) : ViewModel() {
 
   fun onCreate() {
     launch {
       val user = database.user().get()
+      val totalConsumed = database.history().getOnDate(OffsetDateTime.now().toLocalDate()).totalConsumed()
+
       withContext(UI) {
-        view.setDailyIntake(0, user.dailyIntakeGoal)
+        view.setDailyIntake(totalConsumed, user.dailyIntakeGoal)
+        view.setIntakePercentage((totalConsumed / user.dailyIntakeGoal.toFloat()))
       }
     }
   }

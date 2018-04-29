@@ -25,6 +25,7 @@ import android.view.ViewGroup
 import ie.elliot.x.labs.watertracker.R
 import ie.elliot.x.labs.watertracker.extension.toStyledPercentageString
 import ie.elliot.x.labs.watertracker.room.dao.IntakeHistory
+import ie.elliot.x.labs.watertracker.room.dao.totalConsumed
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_history.*
 import org.threeten.bp.format.DateTimeFormatter
@@ -42,9 +43,9 @@ class HistoryRecyclerAdapter(private val data: List<List<IntakeHistory>>) : Recy
   inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
     fun bind(intakeHistory: List<IntakeHistory>) {
       val intakeGoal = 1500
-      val intakeOnDay = intakeHistory.sumBy { it.consumed.toInt() }
+      val intakeOnDay = intakeHistory.totalConsumed()
 
-      intakeHistory.first().dateTime.let {date ->
+      intakeHistory.first().dateTime.let { date ->
         tvDate.text = containerView.context.getString(R.string.history_date,
             date.format(DateTimeFormatter.ofPattern("EEEE")),
             date.format(DateTimeFormatter.ofPattern("dd MMM yyyy")))

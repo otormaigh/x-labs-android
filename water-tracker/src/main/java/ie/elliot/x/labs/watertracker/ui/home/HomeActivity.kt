@@ -42,9 +42,6 @@ class HomeActivity : AppCompatActivity(), HomeView {
 
     tvDate.text = System.currentTimeMillis().formatDate("EEE, dd MMM yyyy")
 
-    // FIXME : test data
-    setIntakePercentage(0.3f)
-
     ivMenu.setOnClickListener { navDrawer.openDrawer(GravityCompat.END) }
     ivHistory.setOnClickListener { HistoryActivity.launch(this@HomeActivity) }
     ivWater.setOnClickListener {
@@ -54,12 +51,12 @@ class HomeActivity : AppCompatActivity(), HomeView {
     tvVersionName.text = getString(R.string.main_nav_version_name, BuildConfig.VERSION_NAME)
   }
 
-  override fun setDailyIntake(currentIntake: Long, intakeGoal: Long) {
+  override fun setDailyIntake(currentIntake: Int, intakeGoal: Int) {
     tvTodaysIntake.text = "$currentIntake / ${intakeGoal}ml"
     tvDailyGoalValue.text = "${intakeGoal}ml"
   }
 
-  private fun setIntakePercentage(intake: Float) {
+  override fun setIntakePercentage(intake: Float) {
     pbIntake.progress = intake
 
     tvIntakePercentage.text = intake.toStyledPercentageString()

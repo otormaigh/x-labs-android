@@ -51,15 +51,14 @@ class WaterTrackerApplication : TimberApplication() {
       launch {
         database.user().insert(User(dailyIntakeGoal = 1500))
 
-        val startTime = OffsetDateTime.now().plusDays(3)
         for (i in 0 until 10) {
-          val dateTime = startTime.minusDays(i.toLong())
+          val dateTime = OffsetDateTime.now().minusDays(i.toLong())
 
           for (j in 0 until 20) {
             database.history().insert(
                 IntakeHistory(
                     dateTime = dateTime.plusMinutes((10..35).random().toLong()),
-                    consumed = (10..150).random().toLong())
+                    consumed = (10..150).random())
             )
           }
         }

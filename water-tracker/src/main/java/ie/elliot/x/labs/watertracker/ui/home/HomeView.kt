@@ -17,5 +17,6 @@
 package ie.elliot.x.labs.watertracker.ui.home
 
 interface HomeView {
-  fun setDailyIntake(currentIntake: Long, intakeGoal: Long)
+  fun setDailyIntake(currentIntake: Int, intakeGoal: Int)
+  fun setIntakePercentage(intake: Float)
 }

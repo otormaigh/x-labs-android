@@ -26,7 +26,7 @@ import ie.elliot.x.labs.watertracker.room.dao.User.Key.CLASS_NAME
 data class User(
     @PrimaryKey(autoGenerate = true)
     var uid: Int = 0,
-    var dailyIntakeGoal: Long = 0
+    var dailyIntakeGoal: Int = 0
 ) {
   object Key {
     const val CLASS_NAME = "user"

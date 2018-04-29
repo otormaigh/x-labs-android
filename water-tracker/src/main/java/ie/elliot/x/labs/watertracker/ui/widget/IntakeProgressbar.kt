@@ -24,6 +24,7 @@ import android.graphics.Path
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnRepeat
 import ie.elliot.x.labs.watertracker.R
 
@@ -47,8 +48,14 @@ class IntakeProgressbar : View {
   private var phase = 0f
   var progress = 0f
     set(value) {
-      field = value
-      animator.start()
+      ValueAnimator.ofFloat(0f, value).apply {
+        duration = (value * 1000).toLong()
+        addUpdateListener {
+          field = animatedValue as Float
+          invalidate()
+        }
+        doOnEnd { animator.start() }
+      }.start()
     }
 
   // FIXME: Figure out a better way to animate the waves.
